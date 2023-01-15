@@ -1,7 +1,35 @@
 <template>
   <div class="container">
     <BaseHeader title="Dashboard" />
-
+    <div>
+      <b-carousel
+        id="carousel-1"
+        v-model="slide"
+        :interval="4000"
+        :controls="slides.length > 1 ? true : false"
+        indicators
+        label-next=""
+        label-prev=""
+        background="#ababab"
+        img-width="750"
+        img-height="200"
+        style="text-shadow: 1px 1px 2px #333"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+      >
+        <b-carousel-slide v-for="(slide, index) in slides" :key="index">
+          <template #img>
+            <img
+              class="d-block img-fluid w-100 carousel-img"
+              width="1024"
+              height="480"
+              :src="slide"
+              alt="image slot"
+            />
+          </template>
+        </b-carousel-slide>
+      </b-carousel>
+    </div>
   </div>
 </template> 
 
@@ -11,38 +39,25 @@ import BaseHeader from "@/components/BaseHeader.vue";
 export default {
   data() {
     return {
-      search: "",
-      ceps: [],
-      currentPage: 1,
-      rows: 1,
-      loading: true,
-      perPage: 3
+      slide: 0,
+      sliding: true,
+      slides:[
+        "https://img.freepik.com/fotos-gratis/figura-triangular-geometrica-legal-em-uma-luz-de-laser-neon-otima-para-fundos-e-papeis-de-parede_181624-9331.jpg?w=2000",
+        "https://img.freepik.com/fotos-gratis/ilustracao-de-formas-geometricas-com-luzes-de-laser-de-neon-otimo-para-fundos-e-papeis-de-parede_181624-32746.jpg?w=2000",
+        "https://i.pinimg.com/originals/dd/e1/61/dde1613a0a52ac572733ffa1d810d6fe.jpg"
+
+      ]
     };
   },
   components: {
     BaseHeader,
   },
   methods: {
-    fetchCeps(page) {
-      var that = this;
-      this.loading = true;
-      axios
-        .get(`http://127.0.0.1:8000/api/cep?page=${page ? page : 1}`)
-        .then((resp) => {
-          that.ceps = resp.data.data;
-          that.currentPage = resp.data.current_page;
-          that.rows = resp.data.total;
-          that.perPage = resp.data.per_page;
-        })
-        .catch(() => {
-          that.ceps = [];
-        })
-        .finally(() =>{
-          that.loading = false;
-        })
+    onSlideStart(slide) {
+      this.sliding = true;
     },
-    nextPage(e) {
-      this.fetchCeps(e);
+    onSlideEnd(slide) {
+      this.sliding = false;
     },
   },
   mounted() {
@@ -81,6 +96,10 @@ h4 {
   display: flex;
   justify-content: flex-end;
   margin-top: 25px;
+}
+.carousel-img {
+  height: 200px !important;
+  object-fit: cover !important;
 }
 @keyframes float {
   to {
