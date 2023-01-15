@@ -29,7 +29,7 @@
     margin: 20px 0px;
   }
   .container{
-    width: 90%  !important;
+    width: 95%  !important;
     margin-top: 10px;
   }
   .tab-header{

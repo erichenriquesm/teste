@@ -1,9 +1,35 @@
 <template>
   <div class="menu">
-    <div class="header-icon">
+    <div @click="$router.push('/')" class="header-icon">
       <img class="logo" src="@/assets/logo.png" alt="git" />
     </div>
-    <div @click="redirect('search')" class="items">
+    <div
+      @click="redirect('/')"
+      class="items"
+      :class="{ selected: $route.name === 'Dashboard' }"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-home"
+      >
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <p class="info">Dashboard</p>
+    </div>
+    <div
+      @click="redirect('search')"
+      class="items"
+      :class="{ selected: $route.name === 'CepSearch' }"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -21,7 +47,11 @@
       </svg>
       <p class="info">Pesquidar CEP</p>
     </div>
-    <div @click="redirect('listagem')" class="items">
+    <div
+      @click="redirect('listagem')"
+      class="items"
+      :class="{ selected: $route.name === 'ListagemCep' }"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -78,11 +108,25 @@ export default {
   .items {
     justify-content: flex-start;
     padding: 0 14px;
+    transition: 0.3s;
   }
   .info {
     display: block;
     font-size: 12px;
     font-weight: 400;
+  }
+  .selected {
+    position: relative;
+    &::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      border-radius: 50%;
+      left: 0px;
+      top: 8px;
+      background-color: rgb(44, 204, 44);
+    }
   }
 }
 .header-icon {
@@ -90,6 +134,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .items {
   width: 100%;
@@ -99,7 +144,6 @@ export default {
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  transition: 0.3s;
   svg {
     transition: 0.3s;
   }
@@ -114,5 +158,11 @@ export default {
   display: none;
   font-size: 14px;
   margin: 0;
+}
+.selected {
+  svg,
+  p {
+    color: rgb(44, 204, 44);
+  }
 }
 </style>

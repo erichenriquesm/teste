@@ -20,7 +20,7 @@ export default {
     width: 20px;
     background: #45BF86;
     position: absolute;
-    left: -10px;
+    left: -9px;
     top: 10px;
     border-radius: 5px;
     z-index: -1;
