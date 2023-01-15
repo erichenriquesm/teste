@@ -1,10 +1,10 @@
 <template>
   <div class="menu">
-    <div @click="$router.push('/')" class="header-icon">
+    <div @click="redirect('')" class="header-icon">
       <img class="logo" src="@/assets/logo.png" alt="git" />
     </div>
     <div
-      @click="redirect('/')"
+      @click="redirect('')"
       class="items"
       :class="{ selected: $route.name === 'Dashboard' }"
     >
@@ -45,7 +45,7 @@
         <circle cx="11" cy="11" r="8"></circle>
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
       </svg>
-      <p class="info">Pesquidar CEP</p>
+      <p class="info">Pesquisar CEP</p>
     </div>
     <div
       @click="redirect('listagem')"
@@ -95,6 +95,7 @@ export default {
   border: 1px solid rgb(209, 208, 208);
   height: 100vh;
   padding: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .logo {
   width: 45px;
