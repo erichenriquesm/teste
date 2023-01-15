@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div>
-      <h4 class="">Pesquisando CEP no banco de dados</h4>
-    </div>
+    <BaseHeader title="Pesquisando CEP no banco de dados"/>
 
     <b-form-input
       v-mask="'#####-###'"
@@ -35,6 +33,8 @@
 
 <script>
 import axios from "axios";
+import BaseHeader from "@/components/BaseHeader.vue";
+
 export default {
   data() {
     return {
@@ -42,6 +42,9 @@ export default {
       cep: {},
       loading: true,
     };
+  },
+  components:{
+    BaseHeader
   },
   methods: {
     fetchCep(cep) {

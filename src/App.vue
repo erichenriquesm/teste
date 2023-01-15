@@ -5,9 +5,7 @@
 </template>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,500;0,600;1,400&display=swap");
-#app {
-  margin-top: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,500;0,600;0,900;1,400&display=swap');#app {
   font-family: "Montserrat", sans-serif;
   input {
     outline: none !important;
@@ -29,6 +27,20 @@
     display: flex;
     justify-content: center;
     margin: 20px 0px;
+  }
+  .container{
+    width: 90%  !important;
+    margin-top: 10px;
+  }
+  .tab-header{
+    margin: 20px 0;
+  }
+  .tab-body{
+    padding: 5px;
+  }
+  .tab-body:nth-child(odd){
+    background: rgba(243, 234, 234, 0.37);
+
   }
 }
 </style>

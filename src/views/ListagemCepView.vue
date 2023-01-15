@@ -1,16 +1,16 @@
 <template>
   <BaseView>
-    <CepSearch />
+    <ListagemCep />
   </BaseView>
 </template>
 
 <script>
-import CepSearch from "@/components/CepSearch/CepSearch.vue";
+import ListagemCep from "@/components/Listagem/ListagemCep.vue";
 import BaseView from "@/components/BaseView.vue";
 
 export default {
   components: {
-    CepSearch,
+    ListagemCep,
     BaseView,
   },
 };
