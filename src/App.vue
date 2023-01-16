@@ -42,5 +42,10 @@
     background: rgba(243, 234, 234, 0.37);
 
   }
+  .page-link.active, .active > .page-link {
+    z-index: 3;
+    background-color: #45BF86 !important;
+    border-color: #428C77 !important;
+  }
 }
 </style>

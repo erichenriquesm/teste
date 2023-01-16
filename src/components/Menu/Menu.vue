@@ -125,7 +125,7 @@ export default {
       border-radius: 50%;
       left: 0px;
       top: 8px;
-      background-color: rgb(44, 204, 44);
+      background-color: #45BF86;
     }
   }
 }
@@ -151,7 +151,7 @@ export default {
 .items:hover {
   svg,
   p {
-    color: rgb(44, 204, 44);
+    color: #45BF86;
   }
 }
 .info {
@@ -162,7 +162,7 @@ export default {
 .selected {
   svg,
   p {
-    color: rgb(44, 204, 44);
+    color: #45BF86;
   }
 }
 </style>
