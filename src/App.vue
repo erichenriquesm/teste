@@ -66,7 +66,7 @@
     gap: 15px;
     margin: 15px 0;
   }
-  .warn{
+  .danger{
     margin:10px 0;
   }
 }

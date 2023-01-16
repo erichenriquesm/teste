@@ -22,5 +22,6 @@ export default {
   display: grid;
   grid-template-columns: 210px 1fr;
   justify-content: center;
+  position: relative;
 }
 </style>

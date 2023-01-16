@@ -97,6 +97,8 @@ export default {
   padding: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: .5s width;
+  position: sticky;
+  top: 0;
 }
 .logo {
   width: 45px;
@@ -141,7 +143,7 @@ export default {
 .items {
   width: 100%;
   display: flex;
-  margin-bottom: 20px;
+  margin: 20px 0;
   justify-content: center;
   align-items: center;
   gap: 5px;
