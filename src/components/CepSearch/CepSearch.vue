@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <BaseHeader title="Pesquisando CEP no banco de dados"/>
+    <BaseHeader title="Pesquisando CEP no banco de dados" />
 
     <b-form-input
       v-mask="'#####-###'"
@@ -17,7 +17,9 @@
           <span class="info">{{ cep.cep }}</span>
         </div>
         <div class="footer">
-          <p>Estado: <span class="info">{{ cep.estado }}</span></p>
+          <p>
+            Estado: <span class="info">{{ cep.estado }}</span>
+          </p>
         </div>
       </div>
 
@@ -43,8 +45,13 @@ export default {
       loading: true,
     };
   },
-  components:{
-    BaseHeader
+  components: {
+    BaseHeader,
+  },
+  mounted() {
+    if (!localStorage.getItem("user")) {
+      this.$router.push("/login");
+    }
   },
   methods: {
     fetchCep(cep) {
@@ -55,7 +62,7 @@ export default {
         .then((resp) => {
           that.cep = resp.data;
         })
-        .catch(() =>{
+        .catch(() => {
           that.cep = {};
         })
         .finally(() => {

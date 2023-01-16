@@ -46,7 +46,7 @@ export default {
       currentPage: 1,
       rows: 1,
       loading: true,
-      perPage: 3
+      perPage: 3,
     };
   },
   components: {
@@ -67,9 +67,9 @@ export default {
         .catch(() => {
           that.ceps = [];
         })
-        .finally(() =>{
+        .finally(() => {
           that.loading = false;
-        })
+        });
     },
     nextPage(e) {
       this.fetchCeps(e);
@@ -77,6 +77,9 @@ export default {
   },
   mounted() {
     this.fetchCeps();
+    if (!localStorage.getItem("user")) {
+      this.$router.push("/login");
+    }
   },
 };
 </script>
