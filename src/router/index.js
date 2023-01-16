@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import LoginView from '../views/LoginView.vue';
 import CepSearchView from '../views/CepSearchView.vue';
 import ListagemCepView from '../views/ListagemCepView.vue';
 import DashboardView from '../views/DashboardView.vue';
@@ -11,6 +12,11 @@ const routes = [
     path: '/',
     name: 'Dashboard',
     component: DashboardView
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView
   },
   {
     path: '/search',

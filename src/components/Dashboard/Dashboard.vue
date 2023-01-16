@@ -39,6 +39,7 @@ import BaseHeader from "@/components/BaseHeader.vue";
 export default {
   data() {
     return {
+      user:{},
       slide: 0,
       sliding: true,
       slides:[
@@ -62,6 +63,10 @@ export default {
   },
   mounted() {
     this.fetchCeps();
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if(!this.user.token){
+      this.$router.push('/login');
+    }
   },
 };
 </script>

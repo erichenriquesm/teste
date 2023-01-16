@@ -60,5 +60,11 @@
     height: 33px;
     font-size: 13px;
   }
+  .btn-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin: 15px 0;
+  }
 }
 </style>
