@@ -13,17 +13,17 @@
     />
 
     <div v-if="!loading">
-      <div v-if="cep.length" class="cep-card">
+      <div v-if="!loading && cep.id && search.length == 9" class="cep-card">
         <div class="header">
-          <p>Rondon</p>
-          <span class="info">87800-000</span>
+          <p>{{ cep.cidade }}</p>
+          <span class="info">{{ cep.cep }}</span>
         </div>
         <div class="footer">
-          <p>Estado: <span class="info">PR</span></p>
+          <p>Estado: <span class="info">{{ cep.estado }}</span></p>
         </div>
       </div>
 
-      <div v-if="!cep.lenth" class="not-found">
+      <div v-if="!cep.id && search.length === 9" class="not-found">
         <p>Nenhum CEP foi achado com a pesquisa {{ this.search }}</p>
       </div>
     </div>
@@ -39,29 +39,32 @@ export default {
   data() {
     return {
       search: "",
-      cep: [],
+      cep: {},
       loading: true,
     };
   },
   methods: {
-    fetchCep() {
+    fetchCep(cep) {
       var that = this;
       this.loading = true;
       axios
-        .post()
+        .get(`http://127.0.0.1:8000/api/cep/${cep}`)
         .then((resp) => {
-          that.cep = resp;
+          that.cep = resp.data;
+        })
+        .catch(() =>{
+          that.cep = {};
         })
         .finally(() => {
-          this.loading = false;
+          that.loading = false;
         });
     },
   },
   watch: {
-    serach(e) {
+    search(e) {
       if (e.length === 9) {
         e = e.replace(/-/g, "");
-        console.log(e);
+        this.fetchCep(e);
       }
     },
   },
