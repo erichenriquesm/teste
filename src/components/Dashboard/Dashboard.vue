@@ -10,7 +10,7 @@
         indicators
         label-next=""
         label-prev=""
-        background="#ababab"
+        background="#ffff"
         img-width="750"
         img-height="200"
         style="text-shadow: 1px 1px 2px #333"

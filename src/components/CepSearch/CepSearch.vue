@@ -84,7 +84,7 @@ h4 {
   animation: float 2s alternate infinite ease-in;
 }
 .cep-card {
-  width: 70%;
+  width: 40%;
   padding: 10px;
   border-radius: 5px;
   margin: 10px 0;
