@@ -66,5 +66,8 @@
     gap: 15px;
     margin: 15px 0;
   }
+  .warn{
+    margin:10px 0;
+  }
 }
 </style>

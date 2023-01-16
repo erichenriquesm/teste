@@ -4,7 +4,7 @@
       src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg"
       alt="img"
     />
-    <b-form-group class="form">
+    <b-form-group v-if="!loading" class="form">
       <h4>Login</h4>
       <label for="email">E-mail</label>
       <b-form-input
@@ -20,7 +20,7 @@
         placeholder="Digite sua senha"
       ></b-form-input>
       <p v-if="!validSenha" class="danger">Digite sua senha</p>
-      <p v-if="warn" class="danger">E-mail ou senha incorreto</p>
+      <p v-if="warn" class="danger">E-mail ou senha incorretos</p>
       <div class="forgot">
         <router-link class="forgot" to="">Esqueceu a senha?</router-link>
       </div>
@@ -31,6 +31,9 @@
         </div>
       </div>
     </b-form-group>
+        <div class="loading" v-if="loading">
+      <b-spinner></b-spinner>
+    </div>
   </div>
 </template> 
 
@@ -44,7 +47,8 @@ export default {
       senha: "",
       validEmail: true,
       validSenha: true,
-      warn:false
+      warn:false,
+      loading:false
     };
   },
   components: {
@@ -68,7 +72,9 @@ export default {
         password: this.senha,
       };
       var that = this;
-      axios.post("http://127.0.0.1:8000/api/user/login", data).then((resp) => {
+      this.loading = true;
+      axios.post("http://127.0.0.1:8000/api/user/login", data)
+      .then((resp) => {
         if (resp.data.token) {
           localStorage.setItem("user", JSON.stringify(resp.data));
           this.$router.push('/dashboard');
@@ -77,6 +83,9 @@ export default {
       })
       .catch(() =>{
         that.warn = true;
+      })
+      .finally(() =>{
+        that.loading = false;
       })
     },
   },
