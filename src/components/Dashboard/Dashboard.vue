@@ -30,8 +30,7 @@
         </b-carousel-slide>
       </b-carousel>
     </div>
-    <h4>{{ time }} {{ user.name }}</h4>
-    <iframe width="100%" height="500" src="https://www.youtube.com/embed/bEl6yN3vd-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <h4>{{ time }} {{user.name }}</h4>
   </div>
 </template> 
 
@@ -65,7 +64,7 @@ export default {
     },
     getHour(){
       let date = new Date;
-      let hour = date.getHours;
+      let hour = date.getHours();
       if(hour >= 0 && hour < 4){
         this.time = "Boa madrugada, "
       }else if(hour < 12){
@@ -79,9 +78,9 @@ export default {
   },
   mounted() {
     this.user = JSON.parse(localStorage.getItem('user'));
-    if(!localStorage.getItem('user')){
-      this.$router.push('/login');
-    }
+    // if(!localStorage.getItem('user')){
+    //   this.$router.push('/login');
+    // }
     this.getHour();
   },
 };
