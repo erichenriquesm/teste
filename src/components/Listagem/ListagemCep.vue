@@ -44,8 +44,9 @@ export default {
       search: "",
       ceps: [],
       currentPage: 1,
-      rows: 100,
+      rows: 1,
       loading: true,
+      perPage: 3
     };
   },
   components: {
@@ -54,12 +55,14 @@ export default {
   methods: {
     fetchCeps(page) {
       var that = this;
+      this.loading = true;
       axios
         .get(`http://127.0.0.1:8000/api/cep?page=${page ? page : 1}`)
         .then((resp) => {
           that.ceps = resp.data.data;
           that.currentPage = resp.data.current_page;
-          that.rows = resp.data.last_page;
+          that.rows = resp.data.total;
+          that.perPage = resp.data.per_page;
         })
         .catch(() => {
           that.ceps = [];

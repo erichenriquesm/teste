@@ -16,11 +16,11 @@ export default {
   position: relative;
   &::after {
     content: "";
-    height: 25px;
-    width: 25px;
-    background: #09e009;
+    height: 20px;
+    width: 20px;
+    background: #45BF86;
     position: absolute;
-    left: -13px;
+    left: -10px;
     top: 10px;
     border-radius: 5px;
     z-index: -1;
