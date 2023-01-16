@@ -62,9 +62,8 @@ export default {
     },
   },
   mounted() {
-    this.fetchCeps();
     this.user = JSON.parse(localStorage.getItem('user'));
-    if(!this.user.token){
+    if(!localStorage.getItem('user')){
       this.$router.push('/login');
     }
   },
