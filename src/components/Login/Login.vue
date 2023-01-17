@@ -65,12 +65,13 @@ export default {
       this.validEmail = true;
       let data = {
         email: this.email,
-        password: this.password,
+        password: this.senha,
       };
       var that = this;
       axios.post("http://127.0.0.1:8000/api/user/login", data).then((resp) => {
         if (resp.data.token) {
           localStorage.setItem("user", JSON.stringify(resp.data));
+          this.$router.push('/dashboard');
           that.warn = false;
         }
       })
