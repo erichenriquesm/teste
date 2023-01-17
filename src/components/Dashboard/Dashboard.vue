@@ -30,6 +30,8 @@
         </b-carousel-slide>
       </b-carousel>
     </div>
+    <h4>{{ time }} {{ user.name }}</h4>
+    <iframe width="100%" height="500" src="https://www.youtube.com/embed/bEl6yN3vd-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
 </template> 
 
@@ -47,7 +49,8 @@ export default {
         "https://img.freepik.com/fotos-gratis/ilustracao-de-formas-geometricas-com-luzes-de-laser-de-neon-otimo-para-fundos-e-papeis-de-parede_181624-32746.jpg?w=2000",
         "https://i.pinimg.com/originals/dd/e1/61/dde1613a0a52ac572733ffa1d810d6fe.jpg"
 
-      ]
+      ],
+      time:""
     };
   },
   components: {
@@ -60,19 +63,33 @@ export default {
     onSlideEnd(slide) {
       this.sliding = false;
     },
+    getHour(){
+      let date = new Date;
+      let hour = date.getHours;
+      if(hour >= 0 && hour < 4){
+        this.time = "Boa madrugada, "
+      }else if(hour < 12){
+        this.time = "Bom dia, ";
+      }else if(hour < 18){
+        this.time = "Boa tarde, "
+      }else{
+        this.time = "Boa noite, "
+      }
+    }
   },
   mounted() {
     this.user = JSON.parse(localStorage.getItem('user'));
     if(!localStorage.getItem('user')){
       this.$router.push('/login');
     }
+    this.getHour();
   },
 };
 </script>
 
 <style scoped lang="scss">
 h4 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
   margin-top: 20px;
 }

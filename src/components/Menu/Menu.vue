@@ -1,10 +1,10 @@
 <template>
   <div class="menu">
-    <div @click="redirect('')" class="header-icon">
+    <div @click="redirect('dashboard')" class="header-icon">
       <img class="logo" src="@/assets/logo.png" alt="git" />
     </div>
     <div
-      @click="redirect('')"
+      @click="redirect('dashboard')"
       class="items"
       :class="{ selected: $route.name === 'Dashboard' }"
     >
